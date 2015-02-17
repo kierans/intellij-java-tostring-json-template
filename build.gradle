@@ -1,0 +1,22 @@
+apply plugin: "java"
+
+sourceCompatibility = 1.7
+version = "1.0"
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  testCompile "org.testng:testng:6.8.21"
+  testCompile "org.hamcrest:hamcrest-all:1.3"
+  testCompile "com.fasterxml.jackson.core:jackson-databind:2.4.2"
+}
+
+test {
+  useTestNG()
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = "2.2.1"
+}
