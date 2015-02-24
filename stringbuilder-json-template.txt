@@ -32,5 +32,6 @@ sb.append(]);
 #set ($i = $i + 1)
 #end
 sb.append("}");
+
 return sb.toString();
 }
