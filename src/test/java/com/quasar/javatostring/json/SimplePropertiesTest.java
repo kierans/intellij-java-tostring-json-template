@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.node.TextNode;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class ScalarPropertiesTest {
+public class SimplePropertiesTest {
   private JsonNode rootNode;
 
   @BeforeMethod(groups = "unit")
@@ -27,7 +27,7 @@ public class ScalarPropertiesTest {
     final JsonNode stringNode = rootNode.get("aString");
 
     assertThat(stringNode, is(correctNodeType(TextNode.class)));
-    assertThat(stringNode.asText(), is(SimpleObject.DEFAULT_STRING));
+    assertThat(stringNode.asText(), is(SimpleProperties.DEFAULT_STRING));
   }
 
   @Test(groups = "unit")
@@ -35,7 +35,7 @@ public class ScalarPropertiesTest {
     final JsonNode intNode = rootNode.get("anInteger");
 
     assertThat(intNode, is(correctNodeType(IntNode.class)));
-    assertThat(intNode.asText(), is(String.valueOf(SimpleObject.DEFAULT_INTEGER)));
+    assertThat(intNode.asText(), is(String.valueOf(SimpleProperties.DEFAULT_INTEGER)));
   }
 
   @Test(groups = "unit")
@@ -43,7 +43,7 @@ public class ScalarPropertiesTest {
     final JsonNode boolNode = rootNode.get("aBoolean");
 
     assertThat(boolNode, is(correctNodeType(BooleanNode.class)));
-    assertThat(boolNode.asText(), is(String.valueOf(SimpleObject.DEFAULT_BOOLEAN)));
+    assertThat(boolNode.asText(), is(String.valueOf(SimpleProperties.DEFAULT_BOOLEAN)));
   }
 
   @Test(groups = "unit")
