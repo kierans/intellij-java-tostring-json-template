@@ -1,3 +1,6 @@
+package com.quasar.javatostring.json;
+
+import static com.quasar.javatostring.json.TestFunctions.assertThatNodeIsCorrectType;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -23,7 +26,7 @@ public class ScalarPropertiesTest {
   public void shouldParseStringProperty() throws Exception {
     final JsonNode stringNode = rootNode.get("aString");
 
-    TestFunctions.assertThatNodeIsCorrectType(stringNode, TextNode.class);
+    assertThatNodeIsCorrectType(stringNode, TextNode.class);
     assertThat(stringNode.asText(), is(SimpleObject.DEFAULT_STRING));
   }
 
@@ -31,7 +34,7 @@ public class ScalarPropertiesTest {
   public void shouldParseIntegerProperty() throws Exception {
     final JsonNode intNode = rootNode.get("anInteger");
 
-    TestFunctions.assertThatNodeIsCorrectType(intNode, IntNode.class);
+    assertThatNodeIsCorrectType(intNode, IntNode.class);
     assertThat(intNode.asText(), is(String.valueOf(SimpleObject.DEFAULT_INTEGER)));
   }
 
@@ -39,7 +42,7 @@ public class ScalarPropertiesTest {
   public void shouldParseBooleanProperty() throws Exception {
     final JsonNode boolNode = rootNode.get("aBoolean");
 
-    TestFunctions.assertThatNodeIsCorrectType(boolNode, BooleanNode.class);
+    assertThatNodeIsCorrectType(boolNode, BooleanNode.class);
     assertThat(boolNode.asText(), is(String.valueOf(SimpleObject.DEFAULT_BOOLEAN)));
   }
 
@@ -47,7 +50,7 @@ public class ScalarPropertiesTest {
   public void shouldParseNullProperty() throws Exception {
     final JsonNode nullNode = rootNode.get("aNull");
 
-    TestFunctions.assertThatNodeIsCorrectType(nullNode, NullNode.class);
+    assertThatNodeIsCorrectType(nullNode, NullNode.class);
     assertThat(nullNode.asText(), is("null"));
   }
 }

@@ -1,3 +1,5 @@
+package com.quasar.javatostring.json;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
