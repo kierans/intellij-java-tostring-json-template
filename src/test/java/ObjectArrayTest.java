@@ -6,12 +6,12 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class ArrayPropertiesTest {
+public class ObjectArrayTest {
   private JsonNode rootNode;
 
   @BeforeMethod(groups = "unit")
   public void givenJson() throws Exception {
-    final String json = new Array().toString();
+    final String json = new ObjectArray().toString();
 
     rootNode = TestFunctions.parseJson(json);
   }
