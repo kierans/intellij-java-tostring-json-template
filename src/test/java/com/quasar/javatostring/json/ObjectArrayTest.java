@@ -1,6 +1,6 @@
 package com.quasar.javatostring.json;
 
-import static com.quasar.javatostring.json.TestFunctions.assertThatNodeIsCorrectType;
+import static com.quasar.javatostring.json.CorrectNodeTypeMatcher.correctNodeType;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -16,14 +16,14 @@ public class ObjectArrayTest {
   public void givenJson() throws Exception {
     final String json = new ObjectArray().toString();
 
-    rootNode = TestFunctions.parseJson(json);
+    rootNode = JsonParser.parseJson(json);
   }
 
   @Test(groups = "unit")
   public void shouldParseListOfSimpleObjects() {
     final JsonNode listNode = rootNode.get("list");
 
-    assertThatNodeIsCorrectType(listNode, ArrayNode.class);
+    assertThat(listNode, is(correctNodeType(ArrayNode.class)));
     assertThat(listNode.size(), is(3));
   }
 
@@ -31,7 +31,7 @@ public class ObjectArrayTest {
   public void shouldParseArrayOfSimpleObjects() {
     final JsonNode arrNode = rootNode.get("arr");
 
-    assertThatNodeIsCorrectType(arrNode, ArrayNode.class);
+    assertThat(arrNode, is(correctNodeType(ArrayNode.class)));
     assertThat(arrNode.size(), is(3));
   }
 }

@@ -1,6 +1,6 @@
 package com.quasar.javatostring.json;
 
-import static com.quasar.javatostring.json.TestFunctions.assertThatNodeIsCorrectType;
+import static com.quasar.javatostring.json.CorrectNodeTypeMatcher.correctNodeType;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -19,14 +19,14 @@ public class ScalarPropertiesTest {
   public void givenJson() throws Exception {
     final String json = new SimpleObject().toString();
 
-    rootNode = TestFunctions.parseJson(json);
+    rootNode = JsonParser.parseJson(json);
   }
 
   @Test(groups = "unit")
   public void shouldParseStringProperty() throws Exception {
     final JsonNode stringNode = rootNode.get("aString");
 
-    assertThatNodeIsCorrectType(stringNode, TextNode.class);
+    assertThat(stringNode, is(correctNodeType(TextNode.class)));
     assertThat(stringNode.asText(), is(SimpleObject.DEFAULT_STRING));
   }
 
@@ -34,7 +34,7 @@ public class ScalarPropertiesTest {
   public void shouldParseIntegerProperty() throws Exception {
     final JsonNode intNode = rootNode.get("anInteger");
 
-    assertThatNodeIsCorrectType(intNode, IntNode.class);
+    assertThat(intNode, is(correctNodeType(IntNode.class)));
     assertThat(intNode.asText(), is(String.valueOf(SimpleObject.DEFAULT_INTEGER)));
   }
 
@@ -42,7 +42,7 @@ public class ScalarPropertiesTest {
   public void shouldParseBooleanProperty() throws Exception {
     final JsonNode boolNode = rootNode.get("aBoolean");
 
-    assertThatNodeIsCorrectType(boolNode, BooleanNode.class);
+    assertThat(boolNode, is(correctNodeType(BooleanNode.class)));
     assertThat(boolNode.asText(), is(String.valueOf(SimpleObject.DEFAULT_BOOLEAN)));
   }
 
@@ -50,7 +50,7 @@ public class ScalarPropertiesTest {
   public void shouldParseNullProperty() throws Exception {
     final JsonNode nullNode = rootNode.get("aNull");
 
-    assertThatNodeIsCorrectType(nullNode, NullNode.class);
+    assertThat(nullNode, is(correctNodeType(NullNode.class)));
     assertThat(nullNode.asText(), is("null"));
   }
 }
